@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "759385817839",
+    "project_id": "brandsandlabels",
+    "storage_bucket": "brandsandlabels.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759385817839:android:884b37e630818b81d5911a",
+        "android_client_info": {
+          "package_name": "com.app.brandslabels"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759385817839-546tmlo5fj8i2vqt2jm6lj8okf7tv79o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMNF0yuM9aZj7zBKmYyudFA4HS5oglueE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759385817839-546tmlo5fj8i2vqt2jm6lj8okf7tv79o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "759385817839-mae3j11abpucit61fbnn0u2unkiflppf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.brandslabels"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

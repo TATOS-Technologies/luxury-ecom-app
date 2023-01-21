@@ -1,0 +1,125 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:meta_package/meta_package.dart';
+import 'package:veralusso/app/theme/colors.dart';
+
+class ErrorDialog {
+  static void showErrorDialog(String message, BuildContext context,
+      {VoidCallback? onOkayPressed}) {
+    AwesomeDialog(
+      padding: const EdgeInsets.all(10),
+      dismissOnTouchOutside: false,
+      context: context,
+      animType: AnimType.topSlide,
+      dialogType: DialogType.error,
+
+      title: LanguageConstants.error.tr,
+      // desc: message,
+      body: Text(
+        message.toString(),
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: primaryBlack,
+          fontSize: 16,
+        ),
+      ),
+      btnOkIcon: Icons.check_circle,
+      btnOkColor: Colors.red,
+      btnOkText: LanguageConstants.okay.tr,
+      btnOkOnPress: onOkayPressed ?? () {},
+    ).show();
+  }
+}
+
+class WarningDialog {
+  static void showWarningDialog(String message, BuildContext context) {
+    AwesomeDialog(
+      dismissOnTouchOutside: false,
+      context: context,
+      animType: AnimType.topSlide,
+      dialogType: DialogType.warning,
+      title: "Warning",
+      // desc: message,
+      body: Center(
+        child: Text(
+          message.toString(),
+          style: const TextStyle(
+            color: primaryBlack,
+            fontSize: 16,
+          ),
+        ),
+      ),
+      btnOkIcon: Icons.check_circle,
+      btnOkColor: Colors.yellow[700],
+      btnOkText: LanguageConstants.okay.tr,
+      btnOkOnPress: () {},
+    ).show();
+  }
+}
+
+class SuccessDialog {
+  static void showSuccessDialog(
+      String message, Function() onPress, BuildContext context) {
+    AwesomeDialog(
+      dismissOnTouchOutside: false,
+      context: context,
+      animType: AnimType.topSlide,
+      dialogType: DialogType.success,
+      title: LanguageConstants.success.tr,
+      // desc: message,
+      body: Text(
+        message.toString(),
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: primaryBlack,
+          fontSize: 16,
+        ),
+      ),
+      btnOkIcon: Icons.check_circle,
+      btnOkColor: Colors.green,
+      btnOkText: LanguageConstants.okay.tr,
+      btnOkOnPress: onPress,
+    ).show();
+  }
+}
+
+class ConfirmationDialog {
+  static void showConfirmationDialog(String title, String message,
+      Function() onOkPress, BuildContext context) {
+    AwesomeDialog(
+      dismissOnTouchOutside: false,
+      context: context,
+      animType: AnimType.topSlide,
+      dialogType: DialogType.info,
+      title: title,
+      // desc: message,
+      body: Text(
+        message.toString(),
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: primaryBlack,
+          fontSize: 16,
+        ),
+      ),
+      btnOkIcon: Icons.check_circle,
+      btnOkColor: Colors.green,
+      btnOkText: "Yes",
+      btnOkOnPress: onOkPress,
+      btnCancelIcon: Icons.cancel,
+      btnCancelColor: Colors.red,
+      btnCancelText: "No",
+      btnCancelOnPress: () {},
+    ).show();
+  }
+}
+
+void errorToast(String error, {String? title}) {
+  Get.snackbar(
+    title ?? LanguageConstants.enterValidText.tr,
+    error,
+    duration: const Duration(seconds: 1),
+    colorText: Colors.black,
+    backgroundColor: Colors.white,
+  );
+}

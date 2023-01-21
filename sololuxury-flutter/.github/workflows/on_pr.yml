@@ -1,0 +1,55 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: On PR to dev branch
+
+on:
+  pull_request:
+    branches: ["dev"]
+
+jobs:
+  build-flutter:
+    name: flutter test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      # disable fail fast so that all steps are run even if one fails
+      fail-fast: false
+    permissions:
+      contents: write
+
+    steps:
+      - name: work around permission issue
+        run: git config --global --add safe.directory /github/workspace
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          architecture: x64
+
+      - name: Create ENV file from secrets
+        run: echo "${{ secrets.SOLO_ENV_STAGE }}" > env
+
+      - name: Checkout meta_package
+        uses: actions/checkout@v3
+        with:
+          repository: MioModaFlutter/Meta-Package
+          token: ${{ secrets.GH_TOKEN }} # `GH_PAT` is a secret that contains your PAT
+          path: Meta-Package
+
+      - name: Get dependencies
+        run: flutter pub get
+        timeout-minutes: 5
+
+      - name: Flutter static analysis
+        run: flutter analyze . --no-fatal-infos --no-fatal-warnings
+
+      - name: Check for proper formatting
+        run: flutter format . --dry-run
+
+      - name: Run tests
+        run: flutter test
+        timeout-minutes: 20

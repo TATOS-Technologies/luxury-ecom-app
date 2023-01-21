@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "110476140103",
+    "project_id": "suvandnat",
+    "storage_bucket": "suvandnat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110476140103:android:5f0b73fda53509b676db62",
+        "android_client_info": {
+          "package_name": "com.app.suvandnat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110476140103-ajkso41gt2h6vcequ0hmsq0j4h25iqeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4erVpOJ0qLP39BeFXNkZ41si2omYiZMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110476140103-ajkso41gt2h6vcequ0hmsq0j4h25iqeh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "110476140103-96sb25qjnn6pbi2ndjgdj4riicti7d86.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.suvandnat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

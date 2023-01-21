@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>327555309265-i8o8ugtpk7m8pfb0ejjhg9bnjfjkof5o.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.327555309265-i8o8ugtpk7m8pfb0ejjhg9bnjfjkof5o</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxDptsaxSAQPs6nrr_4P9JXibDwtqSulo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>327555309265</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.avoirchic</string>
+	<key>PROJECT_ID</key>
+	<string>avoir-chic</string>
+	<key>STORAGE_BUCKET</key>
+	<string>avoir-chic.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:327555309265:ios:7ea416c4c4f6b6702eaff0</string>
+</dict>
+</plist>

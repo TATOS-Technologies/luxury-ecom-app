@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>110476140103-ud83v5kr376pme9013k2ri97nrvb73mn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.110476140103-ud83v5kr376pme9013k2ri97nrvb73mn</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>110476140103-5j5egase7nf29r41isgkpv1qspsofgmf.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAb6IMEDroy9x3gwRCL92VJW6gX7qUqm1Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>110476140103</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mio-moda.suvandnat</string>
+	<key>PROJECT_ID</key>
+	<string>suvandnat</string>
+	<key>STORAGE_BUCKET</key>
+	<string>suvandnat.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:110476140103:ios:40f9a2c5754972ed76db62</string>
+</dict>
+</plist>

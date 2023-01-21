@@ -1,0 +1,60 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Increment Build number"
+  lane :incr_build do
+    # build_num = google_play_track_version_codes(track: 'production') 
+    begin
+      g = google_play_track_version_codes(track: 'production')  
+      gb = google_play_track_version_codes(track: 'internal')
+      max_value = [g[0].to_i,gb[0].to_i].max
+        android_set_version_code(
+        version_code: max_value + 1, # optional, if not specified, Version Code will be incremented
+        gradle_file: "app/build.gradle" # optional
+      )
+
+      metadata_dir="metadata/android/en-US/changelogs"
+      sh("pwd")
+      sh("cp #{metadata_dir}/log.txt #{metadata_dir}/#{max_value+1}.txt")
+      sh("cat #{metadata_dir}/#{max_value+1}.txt")
+      sh("ls #{metadata_dir}")
+    rescue
+      puts 'Not incrementing build number'      
+    end
+
+
+  end
+  # run flutter build before running fastlane deploy. 
+  # Fastlane deploy onyl builds the APK and 
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    upload_to_play_store(
+      track: 'production',
+      aab: '../build/app/outputs/bundle/prodRelease/app-prod-release.aab'
+    )
+  end
+  
+  desc "Deploy a new version to the Google Play"
+  lane :deploy_dev do
+    upload_to_play_store(
+      track: 'internal',
+      aab: '../build/app/outputs/bundle/prodRelease/app-prod-release.aab'
+    )
+  end
+  
+end

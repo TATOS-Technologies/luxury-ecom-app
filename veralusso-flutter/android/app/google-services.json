@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "867474863429",
+    "project_id": "veralusso-304008",
+    "storage_bucket": "veralusso-304008.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867474863429:android:4002ee9bb7a7215a463a2c",
+        "android_client_info": {
+          "package_name": "com.app.veralusso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867474863429-02k3vkt8kcn4f6mmk0sd3oedj7dbjmk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHBw3sN1kgirCJ8l58YItZX7tKsdIBSV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867474863429-02k3vkt8kcn4f6mmk0sd3oedj7dbjmk0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

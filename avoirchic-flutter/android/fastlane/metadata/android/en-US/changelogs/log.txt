@@ -1,0 +1,1 @@
+Latest build for Avoirchic with automated release notes

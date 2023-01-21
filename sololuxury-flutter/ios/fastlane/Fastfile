@@ -1,0 +1,90 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Update build code and version name"
+  lane :update_build_number do
+    tf_version = 0
+    begin
+      tf_version = latest_testflight_build_number
+      max_value = [app_store_build_number,tf_version].max
+      increment_build_number(
+      build_number: max_value + 1,
+      xcodeproj: "Runner.xcodeproj"
+      )
+      begin
+        increment_version_number(version_number: ENV['VERSION_NAME'] )
+      rescue
+        puts 'Skip updating version name'
+      end
+    rescue
+      begin
+        increment_build_number(build_number:tf_version+1,xcodeproj: "Runner.xcodeproj")
+      rescue
+        increment_build_number(build_number:tf_version+1,xcodeproj: "Runner.xcodeproj")
+        puts "not incrementing build code"
+      end
+    end
+  end
+
+  desc "Build and upload to App Store"
+  lane :release do
+    setup_ci if ENV['CI']
+    api_key = app_store_connect_api_key(
+      key_id: "3D5768A3JM",
+      issuer_id: "edf5d6a0-0297-4226-956c-0edd0f47dd86",
+      key_filepath: "./AuthKey_3D5768A3JM.p8",
+      duration: 1200, # optional (maximum 1200)
+      in_house: false # optional but may be required if using match/sigh
+    )
+    match(type: "appstore",api_key: api_key)
+    update_build_number
+    build_app(workspace: "Runner.xcworkspace", scheme: "prod", export_method: "app-store")
+    upload_to_app_store(skip_metadata: true, skip_screenshots: true, precheck_include_in_app_purchases: false)
+  end
+  desc "Build and upload to testflight"
+  lane :build_testing_appstore do
+    setup_ci if ENV['CI']
+    api_key = app_store_connect_api_key(
+        key_id: "3D5768A3JM",
+        issuer_id: "edf5d6a0-0297-4226-956c-0edd0f47dd86",
+        key_filepath: "./AuthKey_3D5768A3JM.p8",
+        duration: 1200, # optional (maximum 1200)
+        in_house: false # optional but may be required if using match/sigh
+      )   
+    match(type: "appstore",api_key: api_key)
+    update_build_number
+    build_app(workspace: "Runner.xcworkspace", scheme: "prod", export_method: "app-store")
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  desc "Build and upload to firebase app distribution"
+  lane :build_testing_firebase do
+    setup_ci if ENV['CI']
+    api_key = app_store_connect_api_key(
+        key_id: "3D5768A3JM",
+        issuer_id: "edf5d6a0-0297-4226-956c-0edd0f47dd86",
+        key_filepath: "./AuthKey_3D5768A3JM.p8",
+        duration: 1200, # optional (maximum 1200)
+        in_house: false # optional but may be required if using match/sigh
+      )
+    match(type: "adhoc",api_key: api_key)
+    update_build_number
+    build_app(workspace: "Runner.xcworkspace", scheme: "prod", export_method: "ad-hoc")
+    firebase_app_distribution(app: ENV['FIREBASE_IOS_APP_ID'], service_credentials_file:"./service_account.json")
+  end
+end
